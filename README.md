@@ -1,4 +1,4 @@
-#Athena
+# Athena
 
 Getting shareholders involved in corporate decisions has always been a problem that didn’t have a clear solution. According to CNN, “Just 27% of shareholders bother to vote.” They don’t feel that they can make an impact with the voting power that they have. That’s where Athena comes in. Athena implements a voting scheme (CTT Voting) where shareholders can vote according to their true preferences, based on the amount of shares they own.  It also rewards those who participate with interest. This mechanism is socially optimal because it picks the outcome that benefits everyone the most, and incentivizes honest reporting of each voter’s preferences. The Athena platform also has functionality to allow businesses, Decentralized Autonomous Organizations (DAOs), and other governing organizations to use alternate voting mechanisms if CTT Voting doesn’t work for them.
 
