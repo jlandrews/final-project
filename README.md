@@ -1,78 +1,89 @@
-# Blockchain for Developers: Final Project
+#Athena
 
-## Overview
+Getting shareholders involved in corporate decisions has always been a problem that didn’t have a clear solution. According to CNN, “Just 27% of shareholders bother to vote.” They don’t feel that they can make an impact with the voting power that they have. That’s where Athena comes in. Athena implements a voting scheme (CTT Voting) where shareholders can vote according to their true preferences, based on the amount of shares they own.  It also rewards those who participate with interest. This mechanism is socially optimal because it picks the outcome that benefits everyone the most, and incentivizes honest reporting of each voter’s preferences. The Athena platform also has functionality to allow businesses, Decentralized Autonomous Organizations (DAOs), and other governing organizations to use alternate voting mechanisms if CTT Voting doesn’t work for them.
 
-For this assignment, we will be giving you the freedom to choose a project of your choice among a group of peers or solo. Peer review will be done at the end and will be responsible for a large portion of the third deliverable. This project is due with deliverables that must be turned in on the day of by **11:59PM**. Note that **this final project is worth 30% of the grade**, so you must complete this to pass the course.
+**Super Voting Contract:**:
+- This contract will have the power to control which voting mechanism that we are using, and control the token.  
+- This is so that the token will not only be linked to one type of voting mechanism
+  - Ex. CTT vs standard democratic vote
+- This will use multisig to be able to set the address of the new voting protocol
+- setAddress(votingMech address)
 
-In order to complete this project, you will need to meet a set of requirements as defined below.
+**Voting Mechanism Contract (CTT):**
+- Admin address allowed to dictate phase changes
+  - Would likely be a multisig contract
+- Phase 1: submit blinded votes (implemented as an array of integers), and lock that voter’s account
+  - Submit amount of shares based on how much you want the outcome
+  - Blinded through commitment scheme (voters submit a secret to be hashed with)
+- Phase 2: have voters reveal votes (by submitting their secret key, and their vote)
+  - With each reveal, sum of votes for each option is accumulated
+  - If you don’t reveal, then you lose all shares
+- Phase 3: voters accounts unlock and get charged or rewarded, and do execution function
+  - Add interest, then charge fee based on the difference they make
+    - A vote was held between optionA and optionB, receiving 70 votes and 60 votes respectively. If Alice staked 40 shares, she will be charged the difference her vote made. In this case if she didn’t vote, optionB would have won by 30 votes, thus Alice is charged 30 shares. If a shareholder’s vote doesn’t make a difference in the outcome, they are not charged.
+  - Burn tokens that voters spend by taking them from the addresses.
+  - In the case of a tie, winner is chosen randomly
+- Phase 1 and 2 have a timeout
+- Happening alongside all of this: can exchange tokens with other shareholders
 
-## Requirements for Project
+**Voting options:**
+- Vote for a certain outcome by paying for it. Get a “reward” by giving interest
+- Vote Null (vote without paying).
+  - Doesn’t care about the outcome. Also receive interest
+- Don’t Vote
+  - No payout
+  - Don’t receive interest
 
-In this course, we've covered how to write smart contracts on Ethereum using industry best practices, integrating with different platforms, testing our contracts and understanding how to connect all parts of the stack together. We've also gone into a few special topics to show you what's possible in the space.
+**CTT components**
+- ERC20 token
+- Phases
+  - Nonvoting (acts as erc20 contract with token transfers)
+    - propose(actions)
+      - Admin only by default
+      - Could allow dynamic set of proposers
+  - Voting (transfers locked, only action is to commit to a vote)
+    - Vote (commitment)
+    - One vote per account
+  - Revealing
+    - Reveal(secret, vote_array)
+      - Accumulates values of vote_array into respective vote totals
+      - Slash account for invalid reveal
+        - Hash(secret||vote_array) != commitment
+        - Or max(vote_array) > balances[msg.sender]
+  - Clearing
+    - Clear()
+      - Calculates if my vote was decisive, and if so, charges me the difference in outcomes before my vote is applied
+  - Execution
+    - Need some mechanism to declare the process totally completed, and execute the winning action, presumably by a call.value
+  - Give interest/inflation for voting, indirectly charges non-voters
+  - Execution mechanism
+    - Proposals as contract to be called / value to be transferred
 
-Now it's time to tie all this knowledge together into one final project. Your project will have three deliverables - one on **11/21**, another on **11/27** and the final on **12/3**.
+**Additional features**
+- Import tool for voter shares like integrating with csv at the beginning
 
-We're going to be making a **full-stack DApp** using Solidity, Truffle, web3.js, some popular JavaScript front-end framework (React, Angular, Vue, etc.) **or** an additional back-end component. We will be doing this using Test-Driven Development (TDD), so we will be expecting tests in the second deliverable.
 
-By the end of this, we expect you to be able to submit to: https://www.stateofthedapps.com/ 
+**Frontend**
+- **Admin:**
+  - Decide Voting mechanism (multisig)
+  - Create voting poll
+  - Set time period of phases
+  - Poke contract to end voting phase (as long as its past set time)
 
-Cool right? There's less than a thousand real DApps in existence let alone working ones are ~200. This will be a great way to get hired by any company in tech as it shows off open source contributions.
+- **Shareholder:**
+  - Heres your vote
+  - Form to submit votes
+    - display each option and have voter input preference under each, and check balance to verify valid vote
+    - Unable to submit an invalid vote from the client
+    - Submit secret key / have them save their key that we generated for them
+  - Clock - how much time is left in the vote
+  - Unlock account
 
-### Disclaimer
-
-Note that you cannot just make an ICO application for this project. We will not accept projects that are simply rehashes of previous assignments we've done or projects that currently exist. We will also be keeping an eye out for any suspicious code that may have not been written by you and has been claimed otherwise. Cheating on this assignment will result in a No Pass for this course.
-
-### Expectations
-
-The expectation for this project is the same as would be for a very strong hackathon project (under the time limit of 48 hours). Feel free to do a hackathon with your friends if needed! Since you are now trained in the art of DApp development we expect you to be able to pull that off in a little over two weeks with your team. We don't expect you to make something mindblowing within this short timeframe, but we want you to show off the best you can do! If you do well enough, we're more than happy to connect you with companies looking to hire interns.
-
-## Deliverable 1 (5%)
-
-### Ideation and Architecture
-
-In this phase we expect for you to write a proposal in markdown showing extensive thought and planning in your DApp. In this report you must outline the majority of the functionality of your DApp and should explain why your idea is a good idea. Diagrams of how components are connected and work together, along with a breakdown of what information goes where and user interaction are all crucial components.
-
-For example, Ether-on-a-Stick (https://github.com/phlip9/ether-on-a-stick) had a very clear cut function and use-case to back it. Remember the corporation polluting the river, and the government was not willing to do anything about it? We solve the free-rider problem here with a dominant assurance contract, and therefore we can place bounties based on crowd demand to be solved by public entities.
-
-For the required back-end component, here are some ideas to work with:
-- IPFS (Recommended)
-- uPort
-- Gnosis
-- Quorum
-- Ethermint
-- Whisper
-- Oraclize.it
-- Lightning Network (Hard, would require Ethereum to Bitcoin interaction. More of a research project.)
-
-Feel free to explore beyond what we have listed here, you do need get our approval by posting on Piazza or coming to office hours beforehand. Instructors can then verify it as "architecturally appropriate", and you can then get moving on your next deliverable.
-
-**This must be written in markdown. List all your teammates (if any) and title your project with something creative!**
-
-## Deliverable 2 (10%)
-
-### Smart Contract and Environment
-
-We are expecting you to have a minimum of two contracts (both of which are written by you, standard libraries don't count). We are also expecting a test suite with test coverage that ensures working code and demonstrates all the main functionality of the contract. You should also fit some edge cases and potential points of security issues within this test suite.
-
-You should also run your code through **Oyente** as any errors/warnings given by Oyente will be seen on our end, and will result in points off. At this point a majority of your tests must pass to get full credit.
-
-In addition to having a complex enough smart contract, we will also be checking that your environment for your additional back-end component works. That means you should be able to run the "Hello World" equivalent on any extra back-end platform you choose.
-
-**You will need to include your full Truffle project in order for us to test.**
-
-## Final Deliverable (15%)
-
-In this phase we expect you to have solved any issues with your smart contract that we may have found (all tests must pass, and all promised functionality must be working), fully incorporating your JavaScript front-end or additional back-end component and being able to host your DApp at a URL. (Heroku and GitHub pages are both excellent free options, depending on your needs)
-
-**Please include all the necessary files and instructions to run your DApp. Extra credit if you deploy to a URL and run the contracts on the mainnet (but please leave an option to use the testnet as well)!**
-
-## Instructions
-
-For each deliverable, we will be checking the same GitHub url. Please fork this repo and submit the link to your repo here: https://goo.gl/forms/WlQTlu4lavaX5Bgx1
-
-## Extras
-
-Not sure what you want to make? Here are a few ideas:
- - Decentralized crowdsourcing of lectures for class - basically have people vote on the quality of lectures and if it's good, it gets a payout in ETH. Dominant assurance applied to democratization/piracy of lectures. If it's decentralized then no one can catch you! **High key, if you are in classes that don't have webcasts and never have had webcasts, this is a way to get them!**
- - Multisig Wallet - This is more for education purposes but if you can create a simple multisig wallet that also has a web user interface, you can learn a lot about the pain Parity has been going through to get things right with their wallet!
- - RPG Game - Use IPFS to manage your save file, use Ethereum to make those state changes using serverless architecture.
+**Tendermint/Ethermint**
+- One of the main issues of this voting system is its vulnerability to Sybil attacks.
+  - A shareholder could distribute her shares among many accounts, making sure no individual account makes a difference in the outcome.
+  - If we take the example above, if Alice were to split her 40 shares between 8 accounts, none of the accounts individually would make a difference in the outcome of the vote, and thus she wouldn’t be charged for her stake.
+    - This completely destroys the incentive of the voting mechanism.
+    - Without the incentives, we cannot assume honest reporting of values, and thus cannot conclude the outcomes are optimal.
+- Fortunately, this issue can be averted by using a Tendermint/Ethermint’s private blockchain.
+  - Which can restrict write access making sure that only verified shareholders can vote and hold tokens.
