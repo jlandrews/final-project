@@ -1,0 +1,95 @@
+{
+  "contract_name": "SuperVoting",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_tokenAddr",
+          "type": "address"
+        }
+      ],
+      "name": "setTokenAddress",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_votingMechContract",
+          "type": "address"
+        }
+      ],
+      "name": "setVotingMech",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getAdmin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_admin",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b604051602080610261833981016040528080519150505b60018054600160a060020a031916600160a060020a0383161790555b505b61020e806100536000396000f300606060405263ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166326a4e8d2811461005357806350770443146100745780636e9960c314610095575b600080fd5b341561005e57600080fd5b610072600160a060020a03600435166100c4565b005b341561007f57600080fd5b610072600160a060020a036004351661010c565b005b34156100a057600080fd5b6100a86101d2565b604051600160a060020a03909116815260200160405180910390f35b60015433600160a060020a039081169116146100df57600080fd5b6002805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b5b50565b60015433600160a060020a0390811691161461012757600080fd5b6000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a038381169190911791829055600254811691639130ffb791166040517c010000000000000000000000000000000000000000000000000000000063ffffffff8416028152600160a060020a039091166004820152602401600060405180830381600087803b15156101b957600080fd5b6102c65a03f115156101ca57600080fd5b5050505b5b50565b600154600160a060020a03165b905600a165627a7a72305820cb68355eb95ec1a74509d7586b59aeecde6222a1e5319d19f7a487287c5eb9bf0029",
+  "networks": {
+    "1508700545766": {
+      "events": {},
+      "links": {},
+      "address": "0x250ab88348870b37fb04fc54b0e3c3ccfc3aa2f7",
+      "updated_at": 1508700560175
+    },
+    "1508700735826": {
+      "events": {},
+      "links": {},
+      "address": "0x1bb12b5048a24c8ee34d002c10fb4c410d0d9f12",
+      "updated_at": 1508700742714
+    },
+    "1508704970988": {
+      "events": {},
+      "links": {},
+      "address": "0x2b38b858e24390f93bf2aa21be5147f62aa2fada",
+      "updated_at": 1508704985486
+    },
+    "1508708795805": {
+      "events": {},
+      "links": {},
+      "address": "0x5230231f82b703ff542e20491367e4ad00d76be7",
+      "updated_at": 1508708812166
+    },
+    "1508921566852": {
+      "events": {},
+      "links": {},
+      "address": "0x0739470c3fff0d045cc4d9f9592d44570bc1db43",
+      "updated_at": 1508921582323
+    },
+    "1508951818692": {
+      "events": {},
+      "links": {},
+      "address": "0x2383c362cd5bc460ce9ad7fec010da26ad7a898c",
+      "updated_at": 1508951830742
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1508951830742
+}

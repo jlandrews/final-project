@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/VotingMechanism.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> VotingMechanism.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.26% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>2/47</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.17% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>2/40</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.4.15;
+&nbsp;
+/* This contract is our implementation of how voting should be done for shareholders in a company */
+&nbsp;
+import "./Token.sol";
+&nbsp;
+contract VotingMechanism {
+&nbsp;
+    address admin;
+    Token tok;
+    enum VotingState {Voting, Revealing, Finished}
+    struct VotingSession {
+        /* What is your favo? 1. opfjdsa 2.dfjkaslf 3.fdjkslajf */
+        string question;
+        uint[] totalVotes;
+        uint numOptions;
+        uint startingPhaseTime;
+        uint phaseLength;
+        VotingState state;
+        mapping (address =&gt; Vote) voters;
+    }
+    uint currentSession = 0;
+    mapping (uint =&gt; VotingSession) votingSessions;
+  	// Last session that each user has participated in
+  	// If last voting session is 0, then the user can vote again
+    mapping (address =&gt; uint) lockedSessions;
+&nbsp;
+  	//interest would be like 1.001 * 10^18, so that interest/interestFactor = 1 + interest percentage
+    uint interestFactor = 10**18;
+  	//needs to be a uint cuz solidity doesn't do floats -_-
+    uint interest = (101)*(10**16);
+    //interest should really be a construction / config parameter
+    struct Vote {
+        /* H(_vote[]||secret) stored here for each voter */
+        bytes32 blindedVote;
+        bool voted;
+        bool revealed;
+      	uint[] values;
+    }
+&nbsp;
+    uint[] altResults;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    modifier isVoting(</span>) { <span class="cstat-no" title="statement not covered" >require(votingSessions[currentSession].state == VotingState.Voting)</span>; _; }
+<span class="fstat-no" title="function not covered" >  	modifier unlocked()</span> { <span class="cstat-no" title="statement not covered" >require(lockedSessions[msg.sender] == 0)</span>; _; }
+    /* so that they can't vote twice */
+<span class="fstat-no" title="function not covered" >    modifier notYetVoted(</span>) { <span class="cstat-no" title="statement not covered" >require(!votingSessions[currentSession].voters[msg.sender].voted)</span>; _; }
+<span class="fstat-no" title="function not covered" >    modifier isAdmin(</span>) { <span class="cstat-no" title="statement not covered" >require(msg.sender == admin)</span>; _; }
+<span class="fstat-no" title="function not covered" >    modifier isRevealing(</span>) { <span class="cstat-no" title="statement not covered" >require(votingSessions[currentSession].state == VotingState.Revealing)</span>;_; }
+<span class="fstat-no" title="function not covered" >    modifier notYetRevealed(</span>) { <span class="cstat-no" title="statement not covered" >require(votingSessions[currentSession].voters[msg.sender].voted &amp;&amp; !votingSessions[currentSession].voters[msg.sender].revealed)</span>; _; }
+<span class="fstat-no" title="function not covered" >    modifier hasFunds(uint[] values</span>) { <span class="cstat-no" title="statement not covered" >require(tok.balanceOf(msg.sender) &gt;= values[argmax(values)])</span>; _; }
+<span class="fstat-no" title="function not covered" >    modifier validCommitment(bytes32 secret, uint[] votes</span>) { <span class="cstat-no" title="statement not covered" >require(keccak256(secret,votes) == votingSessions[currentSession].voters[msg.sender].blindedVote)</span>;_; }
+<span class="fstat-no" title="function not covered" >    modifier isFinished(</span>) { <span class="cstat-no" title="statement not covered" >require(currentSession == 0 || votingSessions[currentSession].state == VotingState.Finished)</span>;_; }
+  	/* checks if the voter is within phaseLength for phase (VOTING or REVEAL) */
+<span class="fstat-no" title="function not covered" >    modifier validPhaseTime(</span>) { <span class="cstat-no" title="statement not covered" >require(block.number - votingSessions[currentSession].startingPhaseTime &lt; votingSessions[currentSession].phaseLength)</span>;_; }
+    /* checks if the voter is past phaseLength to poke and change state */
+<span class="fstat-no" title="function not covered" >    modifier isPastPhaseTime(</span>) { <span class="cstat-no" title="statement not covered" >require(block.number - votingSessions[currentSession].startingPhaseTime &gt;= votingSessions[currentSession].phaseLength)</span>;_; }
+<span class="fstat-no" title="function not covered" >  	modifier checkValLength(uint[] values)</span> { <span class="cstat-no" title="statement not covered" >require(values.length == votingSessions[currentSession].totalVotes.length)</span>;_; }
+&nbsp;
+    function VotingMechanism(address _admin, address _tokenaddr) public {
+        admin = _admin;
+        tok = Token(_tokenaddr);
+    }
+&nbsp;
+    /* Creates a new voting session with _question as question+ options and _numOptions options.
+       Checks that msg.sender = admin and previous voting session is finished or is the first session. */
+<span class="fstat-no" title="function not covered" >    function newVotingSession(string _question, uint _numOptions, uint _phaseLength) isAdmin() isFinished() publi</span>c {
+        /* question:  what is your favo? 1. jkfdlasjfa 2.jkldfsjds 3.fjdklsajfds */
+<span class="cstat-no" title="statement not covered" >        currentSession += 1</span>;
+<span class="cstat-no" title="statement not covered" >        uint currBlockTime = block.number</span>;
+<span class="cstat-no" title="statement not covered" >        votingSessions[currentSession] = VotingSession(_question,</span>
+                                                       new uint[](_numOptions),
+                                                       _numOptions,
+                                                       currBlockTime,
+                                                       _phaseLength,
+                                                       VotingState.Voting);
+    }
+&nbsp;
+    /* Gets question and choices of current voting session's */
+<span class="fstat-no" title="function not covered" >    function getQuestion() public constant returns (string</span>) {
+<span class="cstat-no" title="statement not covered" >        return votingSessions[currentSession].question;</span>
+    }
+&nbsp;
+    /* admin can poke contract to next phase voting -&gt; reveal */
+<span class="fstat-no" title="function not covered" >    function moveToReveal() isAdmin() isVoting() isPastPhaseTime(</span>) {
+<span class="cstat-no" title="statement not covered" >        votingSessions[currentSession].state = VotingState.Revealing</span>;
+<span class="cstat-no" title="statement not covered" >      	votingSessions[currentSession].startingPhaseTime = block.number</span>;
+    }
+&nbsp;
+    /* admin can poke contract to next phase reveal -&gt; finish */
+<span class="fstat-no" title="function not covered" >    function moveToFinish() isAdmin() isRevealing() isPastPhaseTime(</span>) {
+<span class="cstat-no" title="statement not covered" >        votingSessions[currentSession].state = VotingState.Finished</span>;
+    }
+&nbsp;
+    /* create a vote takes in an input of a hashed secret key and your array of votes */
+<span class="fstat-no" title="function not covered" >    function vote(bytes32 _vote)</span>
+  		isVoting()
+        notYetVoted()
+        validPhaseTime()
+        unlocked()
+    {
+<span class="cstat-no" title="statement not covered" >        votingSessions[currentSession].voters[msg.sender] = Vote(_vote,</span>
+                                                                 true,
+                                                                 false,
+                                                                 new uint[](votingSessions[currentSession].numOptions));
+<span class="cstat-no" title="statement not covered" >        lockedSessions[msg.sender] = currentSession</span>;
+        tok.lockAccount(msg.sender);
+    }
+&nbsp;
+    /* reveal real votes */
+<span class="fstat-no" title="function not covered" >    function reveal(bytes32 secret, uint[] values)</span>
+  		isRevealing()
+        validPhaseTime()
+        validCommitment(secret, values)
+        notYetRevealed()
+        hasFunds(values)
+        checkValLength(values)
+    {
+<span class="cstat-no" title="statement not covered" >        for (uint i = 0; i &lt; votingSessions[currentSession].numOptions; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            votingSessions[currentSession].totalVotes[i] += values[i]</span>;
+        }
+<span class="cstat-no" title="statement not covered" >      	votingSessions[currentSession].voters[msg.sender].values = values</span>;
+<span class="cstat-no" title="statement not covered" >        votingSessions[currentSession].voters[msg.sender].revealed = true</span>;
+    }
+&nbsp;
+    /* called at any time after revealing */
+<span class="fstat-no" title="function not covered" >    function unlock() isFinished(</span>) {
+      	/* if didn't reveal, then slash all funds */
+<span class="cstat-no" title="statement not covered" >        if (!votingSessions[lockedSessions[msg.sender]].voters[msg.sender].revealed) {</span>
+<span class="cstat-no" title="statement not covered" >            slash(msg.sender)</span>;
+        } else {
+<span class="cstat-no" title="statement not covered" >            uint charge = computeCharge(msg.sender)</span>;
+            //pay small interest to voters as incentive for participation
+<span class="cstat-no" title="statement not covered" >            uint balanceWithInterest = (tok.balanceOf(msg.sender)*interest) / interestFactor</span>;
+            tok.forceUpdate(msg.sender, balanceWithInterest - charge);
+        }
+      	/* can vote again */
+<span class="cstat-no" title="statement not covered" >      	lockedSessions[msg.sender] = 0</span>;
+    }
+&nbsp;
+  	/* if winner with total votes is different than winner with (totalvotes - your votes) then your
+       vote was decisive, and you should be charged the amount charged, is the margin by which the alterntive
+       winner would have won by which is less than your vote for the winning value, since your vote was decisive */
+<span class="fstat-no" title="function not covered" >  	function computeCharge(address account) returns (uint)</span> {
+<span class="cstat-no" title="statement not covered" >    	uint numOptions = votingSessions[currentSession].numOptions</span>;
+<span class="cstat-no" title="statement not covered" >        altResults = new uint[](numOptions)</span>;
+        //Calculate result of vote without this voter, to find their externality
+<span class="cstat-no" title="statement not covered" >        for (uint i = 0; i &lt; numOptions; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            altResults[i] = votingSessions[currentSession].totalVotes[i] - votingSessions[currentSession].voters[account].values[i]</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        uint realWinner = argmax(votingSessions[currentSession].totalVotes)</span>;
+<span class="cstat-no" title="statement not covered" >        uint altWinner = argmax(altResults)</span>;
+<span class="cstat-no" title="statement not covered" >        if (realWinner != altWinner) {</span>
+<span class="cstat-no" title="statement not covered" >            return altResults[altWinner] - altResults[realWinner];</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          	return 0;</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  	function argmax(uint[] values) returns (uint)</span> {
+        uint maxVal;
+        uint idx;
+<span class="cstat-no" title="statement not covered" >        for (uint i; i &lt; values.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            if (values[i] &gt; maxVal) {</span>
+<span class="cstat-no" title="statement not covered" >                maxVal = values[i]</span>;
+<span class="cstat-no" title="statement not covered" >                idx = i</span>;
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        return idx;</span>
+    }
+&nbsp;
+&nbsp;
+    /* if a voter does not reveal in time, then he loses all access to his tokens */
+<span class="fstat-no" title="function not covered" >    function slash(address account) privat</span>e {
+    	tok.forceUpdate(account, 0);
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getVote(address account) public returns (bytes32, uint[]</span>) {
+<span class="cstat-no" title="statement not covered" >        return (votingSessions[currentSession].voters[msg.sender].blindedVote, votingSessions[currentSession].voters[msg.sender].values);</span>
+    }
+&nbsp;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 22 2017 00:25:24 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

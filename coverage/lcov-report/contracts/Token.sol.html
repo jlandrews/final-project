@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Token.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> Token.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>9/36</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">10% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.03% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>10/37</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+Implements ERC 20 Token standard: https://github.com/ethereum/EIPs/issues/20
+Has modifications
+.*/
+&nbsp;
+pragma solidity ^0.4.15;
+&nbsp;
+import "./TokenInterface.sol";
+&nbsp;
+contract Token is TokenInterface {
+&nbsp;
+    mapping (address =&gt; uint256) balances;
+  	mapping (address =&gt; bool) lockedAccounts;
+    mapping (address =&gt; mapping (address =&gt; uint256)) allowed;
+    uint256 public totalSupply;
+&nbsp;
+  	address votingMechContract;
+  	address superVotingContract;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  	modifier notLocked(address account)</span> {
+<span class="cstat-no" title="statement not covered" >        require(!lockedAccounts[account])</span>;
+      	_;
+    }
+<span class="fstat-no" title="function not covered" >  	modifier isVotingMech()</span> {
+<span class="cstat-no" title="statement not covered" >        require(msg.sender == votingMechContract)</span>;
+      	_;
+    }
+  	modifier isSuperVoting() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(msg.sender == superVotingContract);
+      	_;
+    }
+&nbsp;
+  	function Token(address _superVotingContract) public{
+        superVotingContract = _superVotingContract;
+        address account1 = address(0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
+        balances[account1] = 10;
+        address account2 = address(0x14723a09acff6d2a60dcdf7aa4aff308fddc160c);
+        balances[account2] = 10;
+        address account3 = address(0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db);
+        balances[account3] = 10;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function transfer(address _to, uint256 _value) notLocked(msg.sender) public returns (bool success</span>) {
+        //Default assumes totalSupply can't be over max (2^256 - 1).
+        //If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
+        //Replace the if with this one instead.
+        //if (balances[msg.sender] &gt;= _value &amp;&amp; balances[_to] + _value &gt; balances[_to]) {
+<span class="cstat-no" title="statement not covered" >        if (balances[msg.sender] &gt;= _value &amp;&amp; _value &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >            balances[msg.sender] -= _value</span>;
+<span class="cstat-no" title="statement not covered" >            balances[_to] += _value</span>;
+<span class="cstat-no" title="statement not covered" >            Transfer(msg.sender, _to, _value)</span>;
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        } else { <span class="cstat-no" title="statement not covered" >return false;</span> }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function transferFrom(address _from, address _to, uint256 _value) notLocked(_from) public returns (bool success</span>) {
+        //same as above. Replace this line with the following if you want to protect against wrapping uints.
+        //if (balances[_from] &gt;= _value &amp;&amp; allowed[_from][msg.sender] &gt;= _value &amp;&amp; balances[_to] + _value &gt; balances[_to]) {
+<span class="cstat-no" title="statement not covered" >        if (balances[_from] &gt;= _value &amp;&amp; allowed[_from][msg.sender] &gt;= _value &amp;&amp; _value &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >            balances[_to] += _value</span>;
+<span class="cstat-no" title="statement not covered" >            balances[_from] -= _value</span>;
+<span class="cstat-no" title="statement not covered" >            allowed[_from][msg.sender] -= _value</span>;
+<span class="cstat-no" title="statement not covered" >            Transfer(_from, _to, _value)</span>;
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        } else { <span class="cstat-no" title="statement not covered" >return false;</span> }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function balanceOf(address _owner) constant public returns (uint256 balance</span>) {
+<span class="cstat-no" title="statement not covered" >        return balances[_owner];</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function approve(address _spender, uint256 _value) public returns (bool success</span>) {
+<span class="cstat-no" title="statement not covered" >        allowed[msg.sender][_spender] = _value</span>;
+<span class="cstat-no" title="statement not covered" >        Approval(msg.sender, _spender, _value)</span>;
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function allowance(address _owner, address _spender) constant public returns (uint256 remaining</span>) {
+<span class="cstat-no" title="statement not covered" >      	return allowed[_owner][_spender];</span>
+    }
+&nbsp;
+  	/* sets new voting mechanism */
+  	function newVotingMechanism(address _votingMechContract) isSuperVoting() public {
+        votingMechContract = _votingMechContract;
+    }
+  	/* locks account for address */
+<span class="fstat-no" title="function not covered" >  	function lockAccount(address account) isVotingMech() public</span> {
+<span class="cstat-no" title="statement not covered" >        lockedAccounts[account] = true</span>;
+    }
+  	/* unlocks account for address, call after everyone has revealed ans has been charged */
+<span class="fstat-no" title="function not covered" >  	function unlockAccount(address account, uint256 newBalance) isVotingMech() public</span> {
+<span class="cstat-no" title="statement not covered" >      	forceUpdate(account, newBalance)</span>;
+<span class="cstat-no" title="statement not covered" >    	lockedAccounts[account] = false</span>;
+    }
+  	/* unlocks account for address, call after everyone has revealed ans has been charged */
+<span class="fstat-no" title="function not covered" >  	function forceUpdate(address account, uint256 newBalance) isVotingMech() public</span> {
+      	/* update total supply after force update */
+<span class="cstat-no" title="statement not covered" >      	totalSupply = totalSupply + newBalance - balances[account]</span>;
+<span class="cstat-no" title="statement not covered" >      	balances[account] = newBalance</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getVotingMech() public returns(address</span>) {
+<span class="cstat-no" title="statement not covered" >        return votingMechContract;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function lockedStatus(address account) public returns(bool</span>) {
+<span class="cstat-no" title="statement not covered" >        return lockedAccounts[account];</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Oct 22 2017 00:25:24 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
